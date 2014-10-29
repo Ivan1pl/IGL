@@ -13,5 +13,5 @@ Coming soon.
 
 ## License
 
-This project is licensed under the terms of the MIT license.
+This project is licensed under the terms of the zlib/png license.
 
