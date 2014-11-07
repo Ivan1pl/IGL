@@ -15,6 +15,10 @@
 #include <igl/Shader.hpp>
 #include <igl/Font.hpp>
 #include <igl/Text.hpp>
+#include <igl/Lines.hpp>
+#include <igl/LineStrip.hpp>
+#include <igl/FilledCircle.hpp>
+#include <igl/Circle.hpp>
 
 /// Library namespace.
 namespace igl {

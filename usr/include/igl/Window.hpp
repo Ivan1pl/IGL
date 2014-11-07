@@ -22,6 +22,8 @@ namespace igl {
             std::vector <LoopHandler*> realtime_handlers;
             std::vector <Drawable*> objects;
             Shader shader;
+            int width;
+            int height;
         public:
             /// Default constructor.
             Window() throw();
@@ -97,6 +99,16 @@ namespace igl {
              * This method will be removed or made private in future versions.
              */
             void useDefaultMatrix() throw();
+            /// Get window width.
+            /**
+             * @returns window width (in pixels)
+             */
+            int getWidth() throw();
+            /// Get window height.
+            /**
+             * @returns window height (in pixels)
+             */
+            int getHeight() throw();
     };
 }
 

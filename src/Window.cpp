@@ -36,6 +36,8 @@ void igl::Window::create(int width, int height, std::string name) throw(igl::Exc
     glBindVertexArray(VertexArrayID);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     open = true;
+    this->width = width;
+    this->height = height;
 }
 
 void igl::Window::setDefaultShader(igl::Shader shader) throw() {
@@ -50,6 +52,8 @@ void igl::Window::loop() throw(igl::Exception) {
     int delta = 5;
     int tim = 0;
     do{
+        glfwGetWindowSize(window,&width,&height);
+        glViewport(0,0,width,height);
         Clock::time_point n = Clock::now();
         milliseconds ms = std::chrono::duration_cast<milliseconds>(n - t);
         tim += ms.count();
@@ -111,5 +115,13 @@ void igl::Window::useMatrix(glm::mat4& matrix) throw() {
 
 void igl::Window::useDefaultMatrix() throw() {
     glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
+}
+
+int igl::Window::getWidth() throw() {
+    return width;
+}
+
+int igl::Window::getHeight() throw() {
+    return height;
 }
 
