@@ -14,7 +14,7 @@ namespace igl {
             /**
              * @param first first point
              */
-            LineStrip(Point first) throw();
+            LineStrip(Vertex first) throw();
             /// Copy constructor.
             /**
              * @param l lines to copy

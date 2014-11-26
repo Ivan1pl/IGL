@@ -125,3 +125,7 @@ int igl::Window::getHeight() throw() {
     return height;
 }
 
+igl::Shader igl::Window::getDefaultShader() throw() {
+    return shader;
+}
+

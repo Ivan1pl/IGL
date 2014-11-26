@@ -5,9 +5,11 @@
 #include <igl/Exception.hpp>
 #include <igl/Window.hpp>
 #include <igl/Key.hpp>
-#include <igl/Point.hpp>
+#include <igl/Location.hpp>
 #include <igl/Color.hpp>
+#include <igl/Vertex.hpp>
 #include <igl/Drawable.hpp>
+#include <igl/Point.hpp>
 #include <igl/Triangle.hpp>
 #include <igl/TriangleFan.hpp>
 #include <igl/TriangleStrip.hpp>

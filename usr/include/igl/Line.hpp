@@ -16,7 +16,7 @@ namespace igl {
              * @param p1 first point
              * @param p2 second point
              */
-            Line(Point p1, Point p2) throw(Exception);
+            Line(Vertex p1, Vertex p2) throw(Exception);
             /// Copy constructor.
             /**
              * @param l line to copy

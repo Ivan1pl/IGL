@@ -1,7 +1,7 @@
 #include <igl/TriangleStrip.hpp>
 #include <igl/Window.hpp>
 
-igl::TriangleStrip::TriangleStrip(igl::Point p) throw() {
+igl::TriangleStrip::TriangleStrip(igl::Vertex p) throw() {
     (this->p).push_back(p);
 }
 
@@ -9,7 +9,7 @@ igl::TriangleStrip::TriangleStrip(const igl::TriangleStrip& s) throw() {
     p = s.p;
 }
 
-void igl::TriangleStrip::addPoint(igl::Point p) throw() {
+void igl::TriangleStrip::addPoint(igl::Vertex p) throw() {
     (this->p).push_back(p);
 }
 

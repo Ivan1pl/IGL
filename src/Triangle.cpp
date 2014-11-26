@@ -1,11 +1,11 @@
 #include <igl/Triangle.hpp>
 #include <igl/Window.hpp>
 
-igl::Triangle::Triangle(Point p1, Point p2, Point p3) throw(igl::Exception) {
+igl::Triangle::Triangle(Vertex p1, Vertex p2, Vertex p3) throw(igl::Exception) {
     (this->p).push_back(p1);
     (this->p).push_back(p2);
     (this->p).push_back(p3);
-    if(p1 == p2 || p1 == p3 || p2 == p3) {
+    if(p1.getLocation() == p2.getLocation() || p1.getLocation() == p3.getLocation() || p2.getLocation() == p3.getLocation()) {
         throw Exception("igl::Triangle requires 3 points.");
     }
 }

@@ -14,7 +14,7 @@ namespace igl {
             /**
              * @param first first point
              */
-            Lines(Point first) throw();
+            Lines(Vertex first) throw();
             /// Copy constructor.
             /**
              * @param l lines to copy
@@ -24,7 +24,7 @@ namespace igl {
             /**
              * @param p point
              */
-            void addPoint(Point p) throw();
+            void addPoint(Vertex p) throw();
             /// Create object.
             virtual void create() throw(Exception);
             /// Draw lines.

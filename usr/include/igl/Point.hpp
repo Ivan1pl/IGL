@@ -1,48 +1,32 @@
 #ifndef POINT_HPP
 #define POINT_HPP
 
-#include <igl/Color.hpp>
+#include <igl/Drawable.hpp>
 
 namespace igl {
-    /// Class representing point.
+    /// Drawable point.
     /**
      * @author Mikołaj Nowak (Ivan1pl)
      */
-    class Point {
+    class Point : public Drawable {
         public:
-            /// X coordinate.
-            float x;
-            /// Y coordinate.
-            float y;
-            /// Z coordinate.
-            float z;
-            /// Color.
-            Color c;
-            /// Default constructor.
+            /// Constructor.
             /**
-             * @param x x coordinate
-             * @param y y coordinate
-             * @param z z coordinate
-             * @param c color
+             * @param p first and only vertex
              */
-            Point(float x=.0f, float y=.0f, float z=.0f, Color c=Color()) throw();
+            Point(Vertex p) throw();
             /// Copy constructor.
             /**
              * @param p Point to copy
              */
             Point(const Point& p) throw();
-            /// Assignment operator.
+            /// Draw this point.
             /**
-             * @param p Point to assign
+             * @param window window
              */
-            Point& operator=(const Point& p) throw();
-            /// Check if points are equal.
-            /**
-             * @param p second point
-             * @retval true if points are equal
-             * @retval false otherwise
-             */
-            bool operator==(const Point& p) const throw();
+            virtual void draw(Window * window) throw(Exception);
+            /// Point destructor.
+            virtual ~Point();
     };
 }
 

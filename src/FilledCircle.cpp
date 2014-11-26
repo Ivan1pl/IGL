@@ -6,7 +6,7 @@
 
 #include <cmath>
 
-igl::FilledCircle::FilledCircle(igl::Point center, float radius) throw(igl::Exception) : fan(center) {
+igl::FilledCircle::FilledCircle(igl::Vertex center, float radius) throw(igl::Exception) : fan(center) {
     if(radius <= 0.0f) {
         throw igl::Exception("igl::FilledCircle requires positive radius.");
     }
@@ -14,13 +14,13 @@ igl::FilledCircle::FilledCircle(igl::Point center, float radius) throw(igl::Exce
     float angle = 3.6f/(2.0f*M_PI*radius);
     int parts = std::max(10,(int)(360.0f/angle));
     float step = 2.0f*M_PI/(float)parts;
-    fan.addPoint(Point(center.x+radius,center.y,center.z,center.c));
+    fan.addPoint(Vertex(Location(center.getLocation().x+radius,center.getLocation().y,center.getLocation().z),center.getColor()));
     float currangle = step;
     while(currangle < 2.0f*M_PI) {
-        fan.addPoint(Point(center.x+cos(currangle)*radius,center.y+sin(currangle)*radius,center.z,center.c));
+        fan.addPoint(Vertex(Location(center.getLocation().x+cos(currangle)*radius,center.getLocation().y+sin(currangle)*radius,center.getLocation().z),center.getColor()));
         currangle += step;
     }
-    fan.addPoint(Point(center.x+radius,center.y,center.z,center.c));
+    fan.addPoint(Vertex(Location(center.getLocation().x+radius,center.getLocation().y,center.getLocation().z),center.getColor()));
 }
 
 igl::FilledCircle::FilledCircle(const igl::FilledCircle& fc) throw() : fan(fc.fan) {

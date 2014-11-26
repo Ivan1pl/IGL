@@ -3,7 +3,7 @@
 
 #include <igl/glheaders.hpp>
 #include <igl/Drawable.hpp>
-#include <igl/Point.hpp>
+#include <igl/Vertex.hpp>
 #include <igl/Color.hpp>
 #include <vector>
 
@@ -20,7 +20,7 @@ namespace igl {
              * @param p2 second point
              * @param p3 third point
              */
-            Triangle(Point p1, Point p2, Point p3) throw(Exception);
+            Triangle(Vertex p1, Vertex p2, Vertex p3) throw(Exception);
             /// Copy constructor.
             /**
              * @param t Triangle to copy

@@ -1,7 +1,7 @@
 #include <igl/TriangleFan.hpp>
 #include <igl/Window.hpp>
 
-igl::TriangleFan::TriangleFan(igl::Point p) throw() {
+igl::TriangleFan::TriangleFan(igl::Vertex p) throw() {
     (this->p).push_back(p);
 }
 
@@ -9,7 +9,7 @@ igl::TriangleFan::TriangleFan(const igl::TriangleFan& f) throw() {
     p = f.p;
 }
 
-void igl::TriangleFan::addPoint(igl::Point p) throw() {
+void igl::TriangleFan::addPoint(igl::Vertex p) throw() {
     (this->p).push_back(p);
 }
 

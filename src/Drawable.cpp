@@ -8,12 +8,12 @@ void igl::Drawable::create() throw(igl::Exception) {
     vertexBufferData.clear();
     colorBufferData.clear();
     for(int i=0; i<p.size(); ++i) {
-        vertexBufferData.push_back(p[i].x);
-        vertexBufferData.push_back(p[i].y);
-        vertexBufferData.push_back(p[i].z);
-        colorBufferData.push_back(Color::toFloat(p[i].c.r));
-        colorBufferData.push_back(Color::toFloat(p[i].c.g));
-        colorBufferData.push_back(Color::toFloat(p[i].c.b));
+        vertexBufferData.push_back(p[i].getLocation().x);
+        vertexBufferData.push_back(p[i].getLocation().y);
+        vertexBufferData.push_back(p[i].getLocation().z);
+        colorBufferData.push_back(Color::toFloat(p[i].getColor().r));
+        colorBufferData.push_back(Color::toFloat(p[i].getColor().g));
+        colorBufferData.push_back(Color::toFloat(p[i].getColor().b));
     }
     
     glGenBuffers(1, &vertexbuffer);
@@ -27,6 +27,6 @@ void igl::Drawable::create() throw(igl::Exception) {
 
 void igl::Drawable::setColor(igl::Color c) throw() {
     for(int i=0; i<p.size(); ++i) {
-        p[i].c = c;
+        p[i].setColor(c);
     }
 }

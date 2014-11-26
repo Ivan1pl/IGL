@@ -1,10 +1,10 @@
 #include <igl/Line.hpp>
 #include <igl/Window.hpp>
 
-igl::Line::Line(Point p1, Point p2) throw(igl::Exception) {
+igl::Line::Line(Vertex p1, Vertex p2) throw(igl::Exception) {
     (this->p).push_back(p1);
     (this->p).push_back(p2);
-    if(p1 == p2) {
+    if(p1.getLocation() == p2.getLocation()) {
         throw Exception("igl::Line requires 2 points.");
     }
 }

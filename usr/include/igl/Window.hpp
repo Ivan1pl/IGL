@@ -109,6 +109,11 @@ namespace igl {
              * @returns window height (in pixels)
              */
             int getHeight() throw();
+            /// Get default shader.
+            /**
+             * @returns copy of default shader object
+             */
+            Shader getDefaultShader() throw();
     };
 }
 

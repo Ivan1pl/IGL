@@ -1,7 +1,7 @@
 #include <igl/LineStrip.hpp>
 #include <igl/Window.hpp>
 
-igl::LineStrip::LineStrip(igl::Point first) throw() : igl::Lines(first)
+igl::LineStrip::LineStrip(igl::Vertex first) throw() : igl::Lines(first)
 { }
 
 igl::LineStrip::LineStrip(const igl::LineStrip& l) throw() : igl::Lines(l)

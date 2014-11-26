@@ -19,7 +19,7 @@ namespace igl {
              * @param center center
              * @param radius radius
              */
-            FilledCircle(Point center, float radius) throw(Exception);
+            FilledCircle(Vertex center, float radius) throw(Exception);
             /// Copy constructor.
             /**
              * @param fc circle to copy

@@ -6,7 +6,7 @@
 
 #include <cmath>
 
-igl::Circle::Circle(igl::Point center, float radius) throw(igl::Exception) : lines(igl::Point(center.x+radius,center.y,center.z,center.c)) {
+igl::Circle::Circle(igl::Vertex center, float radius) throw(igl::Exception) : lines(igl::Vertex(igl::Location(center.getLocation().x+radius,center.getLocation().y,center.getLocation().z),center.getColor())) {
     if(radius <= 0.0f) {
         throw igl::Exception("igl::Circle requires positive radius.");
     }
@@ -16,10 +16,10 @@ igl::Circle::Circle(igl::Point center, float radius) throw(igl::Exception) : lin
     float step = 2.0f*M_PI/(float)parts;
     float currangle = step;
     while(currangle < 2.0f*M_PI) {
-        lines.addPoint(Point(center.x+cos(currangle)*radius,center.y+sin(currangle)*radius,center.z,center.c));
+        lines.addPoint(Vertex(Location(center.getLocation().x+cos(currangle)*radius,center.getLocation().y+sin(currangle)*radius,center.getLocation().z),center.getColor()));
         currangle += step;
     }
-    lines.addPoint(Point(center.x+radius,center.y,center.z,center.c));
+    lines.addPoint(Vertex(Location(center.getLocation().x+radius,center.getLocation().y,center.getLocation().z),center.getColor()));
 }
 
 igl::Circle::Circle(const igl::Circle& c) throw() : lines(c.lines) {

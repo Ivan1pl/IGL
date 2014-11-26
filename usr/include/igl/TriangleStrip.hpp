@@ -14,7 +14,7 @@ namespace igl {
             /**
              * @param p first point
              */
-            TriangleStrip(Point p) throw();
+            TriangleStrip(Vertex p) throw();
             /// Copy constructor.
             /**
              * @param s TriangleStrip to copy
@@ -36,7 +36,7 @@ namespace igl {
              * point).
              * @param p point
              */
-            void addPoint(Point p) throw();
+            void addPoint(Vertex p) throw();
     };
 }
 

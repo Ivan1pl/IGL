@@ -3,7 +3,7 @@
 
 #include <igl/glheaders.hpp>
 #include <igl/Exception.hpp>
-#include <igl/Point.hpp>
+#include <igl/Vertex.hpp>
 #include <igl/Color.hpp>
 #include <vector>
 
@@ -16,7 +16,7 @@ namespace igl {
     class Drawable {
         protected:
             /// Vector of points this object contains.
-            std::vector<Point> p;
+            std::vector<Vertex> p;
             /// Vertex buffer used by OpenGL.
             std::vector<GLfloat> vertexBufferData;
             /// Vertex buffer identifier.

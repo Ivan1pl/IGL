@@ -2,7 +2,7 @@
 #define TRIANGLEFAN_HPP
 
 #include <igl/Drawable.hpp>
-#include <igl/Point.hpp>
+#include <igl/Vertex.hpp>
 #include <igl/Color.hpp>
 #include <vector>
 
@@ -17,7 +17,7 @@ namespace igl {
             /**
              * @param p fan center
              */
-            TriangleFan(Point p) throw();
+            TriangleFan(Vertex p) throw();
             /// Copy constructor.
             /**
              * @param f TriangleFan to copy
@@ -39,7 +39,7 @@ namespace igl {
              * point).
              * @param p point
              */
-            void addPoint(Point p) throw();
+            void addPoint(Vertex p) throw();
     };
 }
 

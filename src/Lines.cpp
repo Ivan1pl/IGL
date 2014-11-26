@@ -1,7 +1,7 @@
 #include <igl/Lines.hpp>
 #include <igl/Window.hpp>
 
-igl::Lines::Lines(Point first) throw() {
+igl::Lines::Lines(igl::Vertex first) throw() {
     (this->p).push_back(first);
 }
 
@@ -50,7 +50,7 @@ void igl::Lines::create() throw(igl::Exception) {
     Drawable::create();
 }
 
-void igl::Lines::addPoint(Point p) throw() {
+void igl::Lines::addPoint(igl::Vertex p) throw() {
     (this->p).push_back(p);
 }
 
