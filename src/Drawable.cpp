@@ -2,6 +2,10 @@
 
 igl::Drawable::Drawable() throw(igl::Exception) { }
 
+igl::Drawable::Drawable(const igl::Drawable& d) throw() {
+    p = d.p;
+}
+
 igl::Drawable::~Drawable() { }
 
 void igl::Drawable::create() throw(igl::Exception) {

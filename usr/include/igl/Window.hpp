@@ -7,6 +7,8 @@
 #include <igl/LoopHandler.hpp>
 #include <igl/Drawable.hpp>
 #include <igl/Shader.hpp>
+#include <igl/Container.hpp>
+#include <igl/MatrixStack.hpp>
 #include <vector>
 
 namespace igl {
@@ -14,16 +16,20 @@ namespace igl {
     /**
      * @author Mikołaj Nowak (Ivan1pl)
      */
-    class Window {
+    class Window : public Container {
         private:
             GLFWwindow* window;
             bool open;
             std::vector <LoopHandler*> handlers;
             std::vector <LoopHandler*> realtime_handlers;
-            std::vector <Drawable*> objects;
             Shader shader;
             int width;
             int height;
+            glm::mat4 MVP;
+            MatrixStack ms;
+            GLuint MatrixID;
+            MatrixStack& getMatrixStack() throw();
+            void updateMVP() throw();
         public:
             /// Default constructor.
             Window() throw();
@@ -71,12 +77,6 @@ namespace igl {
              * @param handler real time handler
              */
             void addRealTimeHandler(LoopHandler& handler) throw();
-            /// Add drawable object.
-            /**
-             * Objects will be drawn in the same order as they were added.
-             * @param drawable object
-             */
-            void addObject(Drawable& drawable) throw();
             /// Use shader.
             /**
              * Set current shader to @p s.
@@ -88,17 +88,6 @@ namespace igl {
              * Set current shader to default.
              */
             void useDefaultShader() throw();
-            /// Use matrix.
-            /**
-             * This method will be removed or made private in future versions.
-             * @param matrix matrix
-             */
-            void useMatrix(glm::mat4& matrix) throw();
-            /// Use default matrix.
-            /**
-             * This method will be removed or made private in future versions.
-             */
-            void useDefaultMatrix() throw();
             /// Get window width.
             /**
              * @returns window width (in pixels)
@@ -114,6 +103,7 @@ namespace igl {
              * @returns copy of default shader object
              */
             Shader getDefaultShader() throw();
+        friend class Transformable;
     };
 }
 

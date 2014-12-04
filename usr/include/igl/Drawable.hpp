@@ -28,6 +28,11 @@ namespace igl {
         public:
             /// Default constructor.
             Drawable() throw(Exception);
+            /// Copy constructor.
+            /**
+             * @param d object to copy
+             */
+            Drawable(const Drawable& d) throw();
             /// Create object.
             /**
              * This method is used to create vertex and color buffers.

@@ -4,9 +4,6 @@
 #include <fstream>
 #include <chrono>
 
-glm::mat4 MVP;
-GLuint MatrixID;
-
 typedef std::chrono::high_resolution_clock Clock;
 typedef std::chrono::milliseconds milliseconds;
 
@@ -16,6 +13,16 @@ igl::Window::Window() throw() {
 
 igl::Window::Window(int width, int height, std::string name) throw(igl::Exception) {
     create(width,height,name);
+}
+
+igl::MatrixStack& igl::Window::getMatrixStack() throw() {
+    return ms;
+}
+
+void igl::Window::updateMVP() throw() {
+    MVP = ms.top();
+    MatrixID = glGetUniformLocation(shader, "MVP");
+    glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
 }
 
 void igl::Window::create(int width, int height, std::string name) throw(igl::Exception) {
@@ -38,6 +45,10 @@ void igl::Window::create(int width, int height, std::string name) throw(igl::Exc
     open = true;
     this->width = width;
     this->height = height;
+    // Enable depth test
+    glEnable(GL_DEPTH_TEST);
+    // Accept fragment if it closer to the camera than the former one
+    glDepthFunc(GL_LESS);
 }
 
 void igl::Window::setDefaultShader(igl::Shader shader) throw() {
@@ -45,9 +56,6 @@ void igl::Window::setDefaultShader(igl::Shader shader) throw() {
 }
 
 void igl::Window::loop() throw(igl::Exception) {
-    glm::mat4 identityMatrix = glm::mat4(1.0f);
-    MVP = identityMatrix;
-    MatrixID = glGetUniformLocation(shader, "MVP");
     Clock::time_point t = Clock::now();
     int delta = 5;
     int tim = 0;
@@ -66,10 +74,8 @@ void igl::Window::loop() throw(igl::Exception) {
         }
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glUseProgram(shader);
-        for(int i = 0; i < objects.size(); ++i) {
-            glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
-            objects[i]->draw(this);
-        }
+        updateMVP();
+        drawAll(this);
         glfwSwapBuffers(window);
         glfwPollEvents();
         for(int i = 0; i < handlers.size(); ++i) {
@@ -97,24 +103,12 @@ void igl::Window::addRealTimeHandler(igl::LoopHandler& handler) throw() {
     realtime_handlers.push_back(&handler);
 }
 
-void igl::Window::addObject(igl::Drawable& drawable) throw() {
-    objects.push_back(&drawable);
-}
-
 void igl::Window::useShader(const igl::Shader& s) throw() {
     glUseProgram(s);
 }
 
 void igl::Window::useDefaultShader() throw() {
     glUseProgram(shader);
-}
-
-void igl::Window::useMatrix(glm::mat4& matrix) throw() {
-    glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &matrix[0][0]);
-}
-
-void igl::Window::useDefaultMatrix() throw() {
-    glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
 }
 
 int igl::Window::getWidth() throw() {
