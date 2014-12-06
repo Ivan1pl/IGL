@@ -5,6 +5,7 @@
 #include <igl/Exception.hpp>
 #include <igl/Vertex.hpp>
 #include <igl/Color.hpp>
+#include <igl/Texture.hpp>
 #include <vector>
 
 namespace igl {
@@ -25,6 +26,16 @@ namespace igl {
             std::vector<GLfloat> colorBufferData;
             /// Color buffer identifier.
             GLuint colorbuffer;
+            /// Normal buffer used by OpenGL.
+            std::vector<GLfloat> normalBufferData;
+            /// Normal buffer identifier.
+            GLuint normalbuffer;
+            /// UV buffer used by OpenGL.
+            std::vector<GLfloat> UVBufferData;
+            /// UV buffer identifier.
+            GLuint UVbuffer;
+            /// Texture.
+            Texture texture;
         public:
             /// Default constructor.
             Drawable() throw(Exception);

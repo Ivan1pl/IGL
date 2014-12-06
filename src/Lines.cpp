@@ -5,9 +5,7 @@ igl::Lines::Lines(igl::Vertex first) throw() {
     (this->p).push_back(first);
 }
 
-igl::Lines::Lines(const igl::Lines& l) throw() {
-    p = l.p;
-}
+igl::Lines::Lines(const igl::Lines& l) throw() : Drawable(l) { }
 
 void igl::Lines::draw(igl::Window * window) throw(igl::Exception) {
     // 1rst attribute buffer : vertices

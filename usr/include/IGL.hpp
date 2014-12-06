@@ -3,6 +3,7 @@
 
 #include <igl/glheaders.hpp>
 #include <igl/Exception.hpp>
+#include <igl/Camera.hpp>
 #include <igl/Window.hpp>
 #include <igl/Key.hpp>
 #include <igl/Location.hpp>
@@ -16,6 +17,7 @@
 #include <igl/TriangleStrip.hpp>
 #include <igl/Line.hpp>
 #include <igl/Shader.hpp>
+#include <igl/Texture.hpp>
 #include <igl/Font.hpp>
 #include <igl/MatrixStack.hpp>
 #include <igl/Text.hpp>
@@ -26,6 +28,7 @@
 #include <igl/Container.hpp>
 #include <igl/DrawableContainer.hpp>
 #include <igl/Transformable.hpp>
+#include <igl/Model.hpp>
 
 /// Library namespace.
 namespace igl {

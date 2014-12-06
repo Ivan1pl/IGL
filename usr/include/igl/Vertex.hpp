@@ -3,6 +3,8 @@
 
 #include <igl/Location.hpp>
 #include <igl/Color.hpp>
+#include <igl/Axis.hpp>
+#include <igl/glheaders.hpp>
 
 namespace igl {
     /// Class representing vertex.
@@ -15,6 +17,10 @@ namespace igl {
             Location l;
             /// Color.
             Color c;
+            /// Normal.
+            Axis n;
+            /// UV coordinates.
+            glm::vec2 UVs;
         public:
             /// Default constructor.
             /**
@@ -52,6 +58,26 @@ namespace igl {
              * @param c new color
              */
             void setColor(Color c) throw();
+            /// Get normal vector.
+            /**
+             * @returns normal vector
+             */
+            Axis getNormal() const throw();
+            /// Set normal vector.
+            /**
+             * @param a normal vector
+             */
+            void setNormal(Axis a) throw();
+            /// Get UV coordinates.
+            /**
+             * @returns UV coordinates
+             */
+            glm::vec2 getUVs() const throw();
+            /// Set UV coordinates.
+            /**
+             * @param v UV coordinates
+             */
+            void setUVs(glm::vec2 v) throw();
     };
 }
 

@@ -5,9 +5,7 @@ igl::TriangleFan::TriangleFan(igl::Vertex p) throw() {
     (this->p).push_back(p);
 }
 
-igl::TriangleFan::TriangleFan(const igl::TriangleFan& f) throw() {
-    p = f.p;
-}
+igl::TriangleFan::TriangleFan(const igl::TriangleFan& f) throw() : Drawable(f) { }
 
 void igl::TriangleFan::addPoint(igl::Vertex p) throw() {
     (this->p).push_back(p);

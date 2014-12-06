@@ -9,6 +9,7 @@
 #include <igl/Shader.hpp>
 #include <igl/Container.hpp>
 #include <igl/MatrixStack.hpp>
+#include <igl/Camera.hpp>
 #include <vector>
 
 namespace igl {
@@ -28,6 +29,7 @@ namespace igl {
             glm::mat4 MVP;
             MatrixStack ms;
             GLuint MatrixID;
+            Camera camera;
             MatrixStack& getMatrixStack() throw();
             void updateMVP() throw();
         public:
@@ -103,6 +105,21 @@ namespace igl {
              * @returns copy of default shader object
              */
             Shader getDefaultShader() throw();
+            /// Get aspect ratio.
+            /**
+             * @returns current aspect ratio
+             */
+            float getAspectRatio() throw();
+            /// Get camera.
+            /**
+             * @returns camera
+             */
+            Camera& getCamera() throw();
+            /// Set camera.
+            /**
+             * @param c new camera
+             */
+            void setCamera(const Camera& c) throw();
         friend class Transformable;
     };
 }

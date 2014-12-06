@@ -10,9 +10,7 @@ igl::Triangle::Triangle(Vertex p1, Vertex p2, Vertex p3) throw(igl::Exception) {
     }
 }
 
-igl::Triangle::Triangle(const igl::Triangle& t) throw() {
-    p = t.p;
-}
+igl::Triangle::Triangle(const igl::Triangle& t) throw() : Drawable(t) { }
 
 void igl::Triangle::draw(igl::Window * window) throw(igl::Exception) {
     // 1rst attribute buffer : vertices

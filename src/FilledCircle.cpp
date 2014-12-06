@@ -23,7 +23,7 @@ igl::FilledCircle::FilledCircle(igl::Vertex center, float radius) throw(igl::Exc
     fan.addPoint(Vertex(Location(center.getLocation().x+radius,center.getLocation().y,center.getLocation().z),center.getColor()));
 }
 
-igl::FilledCircle::FilledCircle(const igl::FilledCircle& fc) throw() : fan(fc.fan) {
+igl::FilledCircle::FilledCircle(const igl::FilledCircle& fc) throw() : Drawable(), fan(fc.fan) {
     radius = fc.radius;
 }
 

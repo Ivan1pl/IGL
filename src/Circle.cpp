@@ -22,7 +22,7 @@ igl::Circle::Circle(igl::Vertex center, float radius) throw(igl::Exception) : li
     lines.addPoint(Vertex(Location(center.getLocation().x+radius,center.getLocation().y,center.getLocation().z),center.getColor()));
 }
 
-igl::Circle::Circle(const igl::Circle& c) throw() : lines(c.lines) {
+igl::Circle::Circle(const igl::Circle& c) throw() : Drawable(), lines(c.lines) {
     radius = c.radius;
 }
 

@@ -9,9 +9,7 @@ igl::Line::Line(Vertex p1, Vertex p2) throw(igl::Exception) {
     }
 }
 
-igl::Line::Line(const igl::Line& l) throw() {
-    p = l.p;
-}
+igl::Line::Line(const igl::Line& l) throw() : Drawable(l) { }
 
 void igl::Line::draw(igl::Window * window) throw(igl::Exception) {
     // 1rst attribute buffer : vertices

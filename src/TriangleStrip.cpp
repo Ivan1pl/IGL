@@ -5,9 +5,7 @@ igl::TriangleStrip::TriangleStrip(igl::Vertex p) throw() {
     (this->p).push_back(p);
 }
 
-igl::TriangleStrip::TriangleStrip(const igl::TriangleStrip& s) throw() {
-    p = s.p;
-}
+igl::TriangleStrip::TriangleStrip(const igl::TriangleStrip& s) throw() : Drawable(s) { }
 
 void igl::TriangleStrip::addPoint(igl::Vertex p) throw() {
     (this->p).push_back(p);

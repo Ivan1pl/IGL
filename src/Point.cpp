@@ -5,9 +5,7 @@ igl::Point::Point(Vertex p) throw() {
     (this->p).push_back(p);
 }
 
-igl::Point::Point(const igl::Point& p) throw() {
-    this->p = p.p;
-}
+igl::Point::Point(const igl::Point& p) throw() : Drawable(p) { }
 
 void igl::Point::draw(igl::Window * window) throw(igl::Exception) {
     // 1rst attribute buffer : vertices
