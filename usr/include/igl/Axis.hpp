@@ -23,6 +23,19 @@ namespace igl {
              * @param z z component
              */
             Axis(float x=1.f, float y=.0f, float z=.0f) throw(Exception);
+            /// Copy constructor.
+            /**
+             * @param a axis to copy
+             */
+            Axis(const Axis& a) throw();
+            /// Destructor.
+            virtual ~Axis();
+            /// Assignment operator.
+            /**
+             * @param a axis to assign
+             * @returns reference to modified axis
+             */
+            Axis& operator=(const Axis& a) throw();
             /// Normalize axis.
             void normalize() throw(Exception);
     };

@@ -36,6 +36,8 @@ namespace igl {
             GLuint UVbuffer;
             /// Texture.
             Texture texture;
+            /// True if object has texture.
+            bool textured;
         public:
             /// Default constructor.
             Drawable() throw(Exception);

@@ -1,10 +1,13 @@
 #include <igl/Drawable.hpp>
 
-igl::Drawable::Drawable() throw(igl::Exception) { }
+igl::Drawable::Drawable() throw(igl::Exception) {
+    textured = false;
+}
 
 igl::Drawable::Drawable(const igl::Drawable& d) throw() {
     p = d.p;
     texture = d.texture;
+    textured = d.textured;
 }
 
 igl::Drawable::~Drawable() { }

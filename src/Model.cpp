@@ -70,18 +70,22 @@ bool igl::Model::loadFromOBJ(std::string path) throw() {
         unsigned int uvIndex = uvIndices[i];
         unsigned int normalIndex = normalIndices[i];
 
-        // Get the attributes thanks to the index
         glm::vec3 vertex = temp_vertices[ vertexIndex-1 ];
-        glm::vec2 uv = temp_uvs[ uvIndex-1 ];
+        
+        Vertex tmpVertex(Location(vertex.x,vertex.y,vertex.z));
+
+        // Get the attributes thanks to the index
+        if(uvIndex != 0) {
+            glm::vec2 uv = temp_uvs[ uvIndex-1 ];
+            tmpVertex.setUVs(uv);
+        }
         glm::vec3 normal = temp_normals[ normalIndex-1 ];
 
         // Put the attributes in buffers
         /*out_vertices.push_back(vertex);
         out_uvs     .push_back(uv);
         out_normals .push_back(normal);*/
-        Vertex tmpVertex(Location(vertex.x,vertex.y,vertex.z));
         tmpVertex.setNormal(Axis(normal.x,normal.y,normal.z));
-        tmpVertex.setUVs(uv);
         p.push_back(tmpVertex);
 
     }
@@ -90,6 +94,7 @@ bool igl::Model::loadFromOBJ(std::string path) throw() {
 
 void igl::Model::setTexture(igl::Texture t) throw() {
     texture = t;
+    textured = true;
 }
 
 void igl::Model::draw(igl::Window * window) throw(igl::Exception) {
@@ -100,7 +105,9 @@ void igl::Model::draw(igl::Window * window) throw(igl::Exception) {
     // Set our "myTextureSampler" sampler to user Texture Unit 0
     glUniform1i(TextureID, 0);
     GLuint flagID = glGetUniformLocation(window->getDefaultShader(), "useTex");
-    glUniform1i(flagID, 1);
+    if(textured) {
+        glUniform1i(flagID, 1);
+    }
 
     // 1rst attribute buffer : vertices
     glEnableVertexAttribArray(0);
